@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,  useRef} from 'react';
 import './App.css';
 
 function App() {
@@ -6,47 +6,51 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(null);
   const [result, setResult] = useState(0);
 
+  const memory = useRef(0);
 
 
   function changeFirstNumberHandler(event) {
-    setFirstNumber(event.target.value);
-  }
-
-  function changeSecondNumberHandler(event) {
-    setSecondNumber(event.target.value);
-  }
-
-  function addHandler(event) {
-    setResult(parseFloat(firstNumber) + parseFloat(secondNumber));
-  }
-
-  function subtractHandler(event) {
-    setResult(parseFloat(firstNumber) - parseFloat(secondNumber));
-  }
-
-  function multiplyHandler(event) {
-    setResult(parseFloat(firstNumber) * parseFloat(secondNumber));
-  }
-
-  function divideHandler(event) {
-    setResult(parseFloat(firstNumber) / parseFloat(secondNumber));
-  }
-
-
-  //function clearHandler(event) {}
-
-  function deleteHandler(event) {
+    setFirstNumber(parseFloat(event.target.value));
     
   }
 
+  function changeSecondNumberHandler(event) {
+    setSecondNumber(parseFloat(event.target.value));
+  }
+
+  function addHandler(event) {
+    setResult(firstNumber + secondNumber);
+  }
+
+  function subtractHandler(event) {
+    setResult(firstNumber - secondNumber);
+  }
+
+  function multiplyHandler(event) {
+    setResult(firstNumber * secondNumber);
+  }
+
+  function divideHandler(event) {
+    setResult(firstNumber / secondNumber);
+  }
+
+  function deleteHandler(event) {
+    setResult("");
+   // setSecondNumber("");
+  }
+
   function savevalueHandler(event) {
+    memory.current = result;
+    console.log(memory.current);
 
   }
 
   function copyvalueHandler(event) {
-
+    setSecondNumber(memory.current);
   }
 
+  //[ ] Poner en `firstNumber` el valor almacenado en `result`
+  //Eliminar el valor de `secondNumber`
 
 
   useEffect(
@@ -54,7 +58,7 @@ function App() {
       console.log("firstNumber state:", firstNumber);
       console.log("secondNumber state:", secondNumber);
       console.log("result state:", result);
-
+      console.log("M+: ", memory);
 
     }
   )
@@ -105,6 +109,7 @@ function App() {
       </button>
       <button 
           value="M+" 
+          ref={memory}
           onClick={savevalueHandler}>
             M+
       </button>
