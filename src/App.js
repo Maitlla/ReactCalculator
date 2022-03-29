@@ -76,7 +76,7 @@ function App() { // Componente APP()
     setFirstNumber(memory.current);
   }
 
-  useEffect( 
+  useEffect(
     () => {
       console.log("firstNumber state:", firstNumber);
       console.log("secondNumber state:", secondNumber);
@@ -100,34 +100,34 @@ function App() { // Componente APP()
 
         // setResultsHistory([...resultsHistory, result]); // Dispersión, es lo mismo que las líneas de código anteriores
       }
-    }, 
+    },
     [result] // useEffect() se ejecuta cuando tenga result
   )
 
   return (
     <>
-      <h1>Calculadora</h1>
-      <input type="text" value={firstNumber} onChange={changeFirstNumberHandler} />
-      <br />
-      <br />
-      <input type="text" value={secondNumber} onChange={changeSecondNumberHandler} />
-      <br />
-      <br />
-      <button value="C" onClick={deleteHandler}>C</button>
-      <br />
-      <button value="M+" ref={memory} onClick={savevalueHandler}>M+</button>
-      <button value="MR" onClick={copyvalueHandler}>MR</button>
-      <br />
-      <button value="+" onClick={addHandler}>+</button>
-      <button value="-" onClick={subtractHandler}>-</button>
-      <br />
-      <button value="x" onClick={multiplyHandler}>x</button>
-      <button value="/" onClick={divideHandler}>/</button>
-      <p>Resultado: {result}</p>
-      <p>Historial de operaciones</p>
-      <br />
-      {/* se incorpóra en su salida proporcionando como prop `results` el contenido de `resultsHistory` */}
-      <History results={resultsHistory} />
+      <main>
+
+        <h1>Calculadora</h1>
+        <input type="text" value={firstNumber} onChange={changeFirstNumberHandler} />
+        <input type="text" value={secondNumber} onChange={changeSecondNumberHandler} />
+        <button value="C" onClick={deleteHandler}>C</button>
+        <span>
+          <button value="M+" ref={memory} onClick={savevalueHandler}>M+</button>
+          <button value="MR" onClick={copyvalueHandler}>MR</button>
+          <br />
+          <button value="+" onClick={addHandler}>+</button>
+          <button value="-" onClick={subtractHandler}>-</button>
+          <br />
+          <button value="x" onClick={multiplyHandler}>x</button>
+          <button value="/" onClick={divideHandler}>/</button>
+        </span>
+        <p>Resultado: {result}</p>
+        <p>Historial de operaciones</p>
+        {/* se incorpóra en su salida proporcionando como prop `results` el contenido de `resultsHistory` */}
+        <History results={resultsHistory} />
+       
+      </main>
     </>
   );
 }

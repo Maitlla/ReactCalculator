@@ -1,0 +1,58 @@
+body {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    text-align: center;
+    align-content: center;
+    height: 99vh;
+    background-color: gainsboro;  
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+div {
+    height: 90vh;
+    border: solid 10px; 
+    border-color: white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin: 10px;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 1fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 3fr;
+    text-align: center;
+    justify-items: center;
+    align-items: start;
+    background-color: whitesmoke;
+    border: solid 10px;
+    height: 88vh;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+p {
+    background-color: black;
+    color: white;
+}
+
+button {
+    border: solid 3px;
+    background-color: turquoise;
+    height: 3.5vh;
+    width: 10vw;
+}
+
+input {
+    border: solid 3px;
+    height: 2vh;
+    background-color: rgb(220, 248, 245);
+}
